@@ -1,0 +1,19 @@
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Ethernet Header - https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/Ethernet_II_Frame.png: 
+  - Byte Offset - 12 bytes; Ethertype info is 2 bytes long
+  - 08 xx identifies header as ethernet
+  - Destination MAC comes before Source MAC 
+  - https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/EthernetFramePreamble.png
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+802.1Q Header - https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/802.1QFrame.png:
+  - VLAN-tagged header
+  - Byte Offset - 12 bytes; VLAN Tag precedes Ethertype in MAC Header/Trailer
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+ARP Header - https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/ARP_Header.png:
+  - Used for identifying and correlating devices to MAC and IP addresses
+  - Sender protocol address starts at byte 16; target protocol address starts at byte 24
+  - ARP bridges layers 2 and 3
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
