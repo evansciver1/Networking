@@ -14,6 +14,19 @@ ARP Header - https://git.cybbh.space/net/public/raw/master/modules/networking/sl
   - Sender protocol address starts at byte 16; target protocol address starts at byte 24
   - ARP bridges layers 2 and 3
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
+IPV4 Header - https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/IPv4_Header.png:
+  - DSCP is 6 bits long; ECN is 2 bits
+  - Identification starts at byte offset 4
+  - TTL starts at byte 8
+  - Options are rarely used; start at byte 20
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
+IPV6 Header - https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/IPv6_Header.png
+  - Hop Limit = TTL in the V4 header
+  - Source and Destination address fields are much larger
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+IPV4 vs IPV6 Comparison - https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/IPv4_vs_IPv6_Header.png
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+ICMP Header - https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/ICMPHeader.png
+  - Ping, Traceroute, NMAP
+  - Seperate transport protocol from TCP and UDP
+  - Used for IPV6 auto-configuration (SLAAC)
