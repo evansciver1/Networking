@@ -2,7 +2,7 @@
 Day 1
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 - 'eog [file]' will open an image from linux to your screen
-  - Network Funadmentals:
+  - Network Fundamentals:
     - Byte = 8 bits
     - Half Word = 16 bits
     - Word = 32 bits
@@ -13,10 +13,12 @@ Day 1
     - Message Formatting Encapsulation and Decapsulation - https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/PDU_SDU.png
     - OSI Model Diagram - https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/OSI.png
     - IETF.org/standards - has technical memos on everything dealing with every 802.11 ammendment
-      - Physical Layer/OSI Layer 1 - hardware specs, encoding and signaling, data transmission and reception, physical network design
-      - Data Link Layer/OSI Layer 2 - Switching happens here; Ethernet, ARP, and 802.1Q headers
+      - Physical Layer/OSI Layer 1:
+        -hardware specs, encoding and signaling, data transmission and reception, physical network design
+      - Data Link Layer/OSI Layer 2:
+        - Switching happens here; Ethernet, ARP, and 802.1Q headers
         - Sub Layers - MAC (Media Access Control), LLC (Logical Link Control)
-      - Network Layer/OSI Layer 3 - 
+      - Network Layer/OSI Layer 3:
         - Fragmentation Process - https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/Fragmentation.png
         - Fragmentation bits - RES (reserved - evil bit, always 0), DF (don't fragment - off if a packet is fragmented),
           MF (more to follow - on if fragmented unless it's the last packet of a fragment), 
@@ -30,3 +32,35 @@ Day 1
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 Day 2
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
+  - Network Fundamentals (cont.):
+    - Transport Layer/OSI Layer 4:
+      - TCP and UDP 
+    - Session Layer/OSI Layer 5:
+      - Protocols: Socks, NetBIOS, PPTP/L2TP, RPC
+      - SMB/CIFS: SMB rides over NetBIOS; SAMBA and CIFS are just flavors of SMB
+      - RPC: any port, request/response protocol
+    - Presentation Layer/OSI Layer 6:
+      - Responsible for translation, formating, encoding, encryption, and compression
+    - Application Layer/OSI Layer 7:
+      - FTP: active and passive mode
+        - FTP Active Issues:
+          - NAT and Firewall traversal issues
+          - Complications with tunneling through SSH
+          - Passive FTP solves issues related to active mode is is most often used in modern systems
+      - SSH
+        - SSH Messages Provide:
+          - Client/server authentication
+          - Asymmetric or PKI for key exchange
+          - Symmetric for session
+          - User authentication
+          - Data stream channeling
+        - SSH Architecture:
+          - Server, Client, Session, Keys, Key Generator
+            - SSH Keys:
+              - User - asymmetric public key used to identify the user to the server
+              - Host - asymmetric public key used to identify the server to the user
+              - Session - symmetric key created by the client nad server to protect the session's communication
+        - HTTP(S):
+          - Methods are GET/HEAD/POST/PUT
+          - Status Codes are 100, 200, 300, 400
+        - 
