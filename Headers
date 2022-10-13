@@ -75,7 +75,10 @@ TFTP (UDP 69) - https://git.cybbh.space/net/public/raw/master/modules/networking
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 NTP (UDP 123) - https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/ntp.png
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
-
+SNMP (UDP 161/162) - https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/snmp.png
+  - 7 message types: Get Request, Set Request, Get Next, Get Bulk, Response
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
-
+RADIUS (UDP 1645/1646 and 1812/1813) - https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/radius.png
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+RTP (UDP and and above 1023) - https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/rtp.png
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
