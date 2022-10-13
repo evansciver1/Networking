@@ -92,5 +92,9 @@ Day 2
       - F = Result of Expresion
       - G = optional: Logical Operator (&& ||) to bridge expressions
       - Example: tcpdump 'ether[12:2] = 0x0800 && (tcp[2:2] != 22 &&
-    - 
-
+    - Bitwise Masking - https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/ver-ihl-bpf.png:
+      - Filter down to bits an not just the byte; ex: ip[0] & 0x0F > 0x05 = looks at the PSH  RST SYN AND FIN bits to see if they're total greater than 5
+      - Most Exclusive - All designated bit values must be set; no others can be set
+      - Less Exclusive - All designated bits must be set; all others may be set (tcp[13] & 0x11 = 0x11 - ack and fin have to be on; all others can be whatever)
+      - Least Exclusive - At least one of the designated bits must be set to not equal 0; all others may be set (tcp[13] & 0x11 !=0)
+      
