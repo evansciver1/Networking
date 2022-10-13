@@ -59,8 +59,38 @@ Day 2
             - SSH Keys:
               - User - asymmetric public key used to identify the user to the server
               - Host - asymmetric public key used to identify the server to the user
-              - Session - symmetric key created by the client nad server to protect the session's communication
-        - HTTP(S):
-          - Methods are GET/HEAD/POST/PUT
-          - Status Codes are 100, 200, 300, 400
-        - 
+              - Session - symmetric key created by the client and server to protect the session's communication
+      - HTTP(S):
+        - Methods are GET/HEAD/POST/PUT
+        - Status Codes are 100, 200, 300, 400
+  - Network Traffic Sniffing:
+    - Capture Library:
+      - Traffic Capture is possible because of Libpcap, WinPcap, NPCAP
+    - TCPDump Demo:
+      - sudo tcpdump [filter] 
+      - -I specifies an interface
+      - -D shows interfaces
+      - -r reads from a file
+      - -X shows hex and ascii
+      - -XX adds additional header info
+      - -v adds verbosity
+      - -w writes to a file
+      - filters are generally in normal language i.e. sudo tcpdump 'tcp port 80' -r [file] only shows packets on port 80
+      - -n changes protocol names to port numbers
+  - Berkeley Packet Filters (BPF):
+    - Requests a SOCK_RAW socket and setsockopt calls SO_ATTACH_FILTER
+    - sock = socket(PF_PACKET, SOCK_RAW, htons(ETH_P_ALL))
+      ...
+      setsockopt(sock, SOL_SOCKET, SO_ATTACH_FILTER, ...)
+    - Using BPFs with operators, bitmasking, and TCPDump creates a powerful tool for traffic filtering and parsing
+    -  tcpdump {A} [B:C] {D} {E} {F} {G}
+      - A = Protocol (ether | arp | ip | ip6 | icmp | tcp | udp)
+      - B = Header Byte offset
+      - C = optional: Byte Length. Can be 1, 2 or 4 (default 1)
+      - D = optional: Bitwise mask (&)
+      - E = Operator (= | == | > | < | <= | >= | != | () | << | >>)
+      - F = Result of Expresion
+      - G = optional: Logical Operator (&& ||) to bridge expressions
+      - Example: tcpdump 'ether[12:2] = 0x0800 && (tcp[2:2] != 22 &&
+    - 
+
