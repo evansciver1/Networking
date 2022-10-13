@@ -97,4 +97,10 @@ Day 2
       - Most Exclusive - All designated bit values must be set; no others can be set (tcp[13] = 0x11 or tcp[13] & 0xFF = 0x11)
       - Less Exclusive - All designated bits must be set; all others may be set (tcp[13] & 0x11 = 0x11 - ack and fin have to be on; all others can be whatever)
       - Least Exclusive - At least one of the designated bits must be set to not equal 0; all others may be set (tcp[13] & 0x11 !=0)
-      
+  - Layer 2 Switching Technologies: 
+    - VLANS and IEEE 802.1Q - https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/802.1QFrame.png
+    - IEEE 802.1AD "Q-in-Q" - https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/802.1adFrame.jpg and 
+      https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/doubletags.png
+  - Layer 3 Switching Technologies
+    - Routing Tables - yeah
+----------------------------------------------------------------------------------------------------------------------------------------------------------    
