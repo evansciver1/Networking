@@ -79,4 +79,112 @@ Stream.py
  41 
  42 # Send the packet
  43 s.sendto(packet, (dst_ip, 0))
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+TCP Ipv4 header: 
+  #!/usr/bin/python3
+    2 
+    3 #Building the socket
+    4 import socket
+    5 
+    6 #System level commands
+    7 import sys
+    8 
+    9 #For doing an array
+   10 import array
+   11 
+   12 #For establishing the packet structure. This will allow direct access to methods and functions i    n the struct module
+   13 from struct import *
+   14 
+   15 #Create a raw socket
+   16 try:
+   17     s = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_RAW)
+   18 except socket.error as msg:
+   19     print(msg)
+   20     sys.exit()
+   21 
+   22 packet = ''
+   23 
+   24 src_ip = "10.1.0.1"
+   25 dst_ip = "10.3.0.2"
+   26 
+   27 #Lets add the ipv4 header info
+   28 
+   29 ip_ver_ihl = 69 #This is putting the decimal conversion of 0x45 for Version and Internet Header     Length
+   30 ip_tos = 0 #This combines the DSXCP and ECN fields
+   31 ip_len = 0 #The kernel will fill in the actual length of the packet
+   32 ip_id = 12345 #This sets the IP identity identification for the post
+   33 ip_frag = 0 #Sets fragmentation to off
+   34 ip_ttl = 64 #Sets ttl of the packet
+   35 ip_proto = 6 #Sets IP protocol to 16
+   36 ip_check = 0 #Kernel fills in the checksum for the packet
+   37 ip_srcadd = socket.inet_aton(src_ip) # Inet_anton will convert an IP addre to a 32 bit number
+   38 ip_dstadd = socket.inet_aton(dst_ip) # Inet_anton will convert an IP to a 32 bit number
+   39 
+   40 ip_header = pack('!BBHHHBBH4s4s', ip_ver_ihl, ip_tos, ip_len, ip_id, ip_frag, ip_ttl, ip_proto,     ip_check, ip_srcadd, ip_dstadd)
+   41 
+   42 #TCP Header Fields
+   43 tcp_src = 54321 #Source
+   44 tcp_dst = 7777 #Destination
+   45 tcp_seq = 454 #Sequence number
+   46 tcp_ack_seq = 0 #ack sequence number
+   47 tcp_data_off = 5 #data offset specifying the size of the header * 4
+   48 tcp_reserve = 0 #The 3 reserve bits + ns flag in reserver field
+   49 tcp_flags = 0 #flags
+   50 tcp_win = 65535 #maximum allowed window size reordered to network order
+   51 tcp_chk = 0 #tcp checksum which will be calculated later on
+  tcp_urg_ptr = 0 #Urgent pointer only if urg flag is set
+   53 
+   54 #Combine the left shifted 4 bit TCP offset and the reserve field
+   55 tcp_off_res = (tcp_data_off << 4) + tcp_reserve
+   56 
+   57 
+   58 #TCP flags by bit starting from right to left 
+   59 tcp_fin = 0 #finished
+   60 tcp_syn = 1 #Synchronization
+   61 tcp_rst = 0 #Reset
+   62 tcp_psh = 0 #Push
+   63 tcp_ack = 0 #Acknowledged
+   64 tcp_urg = 0 #Urgent
+   65 tcp_ece = 0 #Explicit congestion Notification
+   66 tcp_cwr = 0 # Congested Window reduced
+   67 
+   68 #Combine the TCP flags by left shifting the bit locations and adding the bits together
+   69 tcp_flags = tcp_fin + (tcp_syn << 1) + (tcp_rst << 2) + (tcp_psh << 3) + (tcp_ack << 4) + (tcp_u    rg << 5) + (tcp_ece << 6) + (tcp_cwr << 7)
+   70 
+   71 #The ! in the pack format string means network order
+   72 tcp_hdr = pack('!HHLLBBHHH', tcp_src, tcp_dst, tcp_seq, tcp_ack_seq, tcp_off_res, tcp_flags, tcp    _win, tcp_chk, tcp_urg_ptr)
+   73 user_data = b'Hey buddy hows it going'
+   74 
+   75 #Pseudo Header fields
+   76 src_address = socket.inet_aton(src_ip)
+   77 dst_address = socket.inet_aton(dst_ip)
+   78 reserved = 0
+   79 protocol = socket.IPPROTO_TCP
+   80 tcp_length = len(tcp_hdr) + len(user_data)
+   81 
+   82 #Pack the Pseudo header and combine with user data
+   83 ps_hdr = pack('!4s4sBBH', src_address, dst_address, reserved, protocol, tcp_length)
+   84 ps_hdr = ps_hdr + tcp_hdr + user_data
+   85 
+   86 def checksum(data):
+   87     if len(data) % 2 !=0:
+   88         data += b'\0'
+   89     res = sum(array.array("H", data))
+   90     res = (res >> 16) + (res & 0xffff)
+   91     res += res >> 16
+   92     return (~res) & 0xffff
+   tcp_chk = checksum(ps_hdr)
+   95 
+   96 #Pack the TCP header to fill in the correct checksum
+   97 tcp_hdr = pack('!HHLLBBH', tcp_src, tcp_dst, tcp_seq, tcp_ack_seq, tcp_off_res, tcp_flags, tcp_w    in) + pack('H', tcp_chk) + pack('!H', tcp_urg_ptr)
+   98 
+   99 #Combine all of the headers and the user data
+  100 packet = ip_header + tcp_hdr + user_data
+  101 
+  102 #Send the packet
+  103 s.sendto(packet, (dst_ip, 0))
+  104 
+  105 
+  106 # Send the packet
+  107 s.sendto(packet, (dst_ip, 0))
 
