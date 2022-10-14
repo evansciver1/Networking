@@ -122,51 +122,16 @@ Day 3
         or to create packets from scratch, which requires elevated privileges.
     - Network Programming with Python3:
       - Network sockets primarily use the Python3 socket and socket.socket function
-      - import socket
-  s = socket.socket(socket.FAMILY, socket.TYPE, socket.PROTOCOL)
-
-The socket.socket Function
-
-    Inside the socket.socket. function, you have these arguments, in order:
-
-socket.socket([*family*[,*type*[*proto*]]])
-
-    family constants should be: AF_INET (default), AF_INET6, AF_UNIX
-
-    type constants should be: SOCK_STREAM (default), SOCK_DGRAM, SOCK_RAW
-
-    proto constants should be: 0 (default), IPPROTO_RAW
-
-Python3 Libraries and References
-
-Socket
+      - import socket s = socket.socket(socket.FAMILY, socket.TYPE, socket.PROTOCOL)
+    - Raw IPV4 Sockets:
+      - Raw Socket scripts must include the IP header and the next headers.
+      - Requires guidance from the "Request for Comments" (RFC)to follow header structure properly.
+      - Raw Socket Use Case:
+      	- Testing specific defense mechanisms 
+	- Avoiding defense mechanisms
+	- Obfuscating data during transfer
+	- Manually crafting a packet with the chosen data in header field
+    - Encoding and Decoding:
+    	- Taking bits and coverting them to a specific cypher
+	- Common Schemes: UTF-8, Base64, Hex
 	
-
-https://docs.python.org/3/library/socket.html
-
-Struct
-	
-
-https://docs.python.org/3/library/struct.html
-
-Sys
-	
-
-https://docs.python.org/3/library/sys.html
-Python3 Libraries and References (Cont)
-
-Errors
-	
-
-https://docs.python.org/3/tutorial/errors.html
-
-Exceptions
-	
-
-https://docs.python.org/3/library/exceptions.html
-Stream and Datagram Socket Demos
-
-Follow along with the instructor on the Internet Host
-7.1
-Network Programming with Python3Network sockets primarily use the Python3 Socket library and socket.socket function.import socket s = socket.socket(socket.FAMILY, socket.TYPE, socket.PROTOCOL)
-
