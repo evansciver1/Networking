@@ -147,6 +147,7 @@ Day 4
 	  	  - DNS: resolves hostnames to IPs, RFC 3912, WHOIS queries
 		  - Dig: typically between primary and secondary DNS servers, if allowed to transfer externally hostnames, IPs, and IP blocks can be determined
 		  	- dig axfr @[server1] [server2]: performs a zone transfer and shows records from the first zone
+			- dig [box name] MX/SOA/TXT: shows records for these specific types of info stored as DNS info
 		  - Host History: wayback machine, netcraft
 		  - Google searches: subdomains, technologies
 		  - Shodan: reveals info about technologies, remote access services, improperly configured services, and net infrastructure
