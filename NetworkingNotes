@@ -135,4 +135,53 @@ Day 3
     	- Taking bits and coverting them to a specific cypher
 	- Common Schemes: UTF-8, Base64, Hex
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
-
+Day 4
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+  - Network Reconnaissance
+    - Passive:
+      	- Gathering info about targets w/o direct interaction
+		- Requires more time than active recon, but has lower risk of discovery
+		- Identify IP addrs. and Sub-Domains, External and 3rd party sites, people and technologies, content of interest, vulnerabilities
+		- Tools include WhoIs queries, job site listings, phone numbers, google searches, passive OS fingerprinting
+		- External Network Reconnaissance:
+	  	  - DNS: resolves hostnames to IPs, RFC 3912, WHOIS queries
+		  - Dig: typically between primary and secondary DNS servers, if allowed to transfer externally hostnames, IPs, and IP blocks can be determined
+		  	- dig axfr @[server1] [server2]: performs a zone transfer and shows records from the first zone
+		  - Host History: wayback machine, netcraft
+		  - Google searches: subdomains, technologies
+		  - Shodan: reveals info about technologies, remote access services, improperly configured services, and net infrastructure
+		- Network Scanning:
+		  - Strategy:
+		  	- Remote to Local
+			- Local to Remote
+			- Local to Local
+			- Remote to Remote
+		  - Approach:
+		  	- Aim: wide range target scan, target specific scan
+			- Method: single source scan, distributed scan
+	      - Types:
+		  	- Broadcast ping and ping sweep
+			- ARP scan
+			- SYN scan
+			- Full connect scan
+			- Null scan
+			- FIN scan
+			- XMAS tree scan
+			- UDP scan
+			- ACK/Window scan
+			- RPC scan
+			- FTP scan
+			- Decoy scan
+			- OS fingerprinting scan
+			- Version scan
+			- Protocol ping
+			- Discovery probes
+		  - Network Scanning - Code
+		  	- nmap [Options] [Target IP/ Subnet]
+		      - Nmap by default sends out ping packets; if pings are being blocked on the network nmap will not work
+			  - https://nmap.org/book/man.html <- nmap guide book from nmap.org
+			- nc [Options] [Target IP] [Target Port]
+			  - nc does not support cidr notation, while nmap does; nc also requires a specific port to go to, while nmap does not
+			  - https://linux.die.net/man/1/nc <- nc syntax guide
+		  - Network Mapping - https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/offensivefinishednetwork.png
+----------------------------------------------------------------------------------------------------------------------------------------------------------
