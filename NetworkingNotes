@@ -139,8 +139,8 @@ Day 4
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
   - Network Reconnaissance
     - Passive:
-      	- Gathering info about targets w/o direct interaction
-		- Requires more time than active recon, but has lower risk of discovery
+      	- Gathering info about targets w/o direct interaction:
+	  - Requires more time than active recon, but has lower risk of discovery
 		- Identify IP addrs. and Sub-Domains, External and 3rd party sites, people and technologies, content of interest, vulnerabilities
 		- Tools include WhoIs queries, job site listings, phone numbers, google searches, passive OS fingerprinting
 		- External Network Reconnaissance:
@@ -184,4 +184,6 @@ Day 4
 			  - nc does not support cidr notation, while nmap does; nc also requires a specific port to go to, while nmap does not
 			  - https://linux.die.net/man/1/nc <- nc syntax guide
 		  - Network Mapping - https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/offensivefinishednetwork.png
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Day 5
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
