@@ -257,4 +257,26 @@ Day 5
 	      	- nc -l -p 1111 > file.txt
 	      - On the sending box:
 	      	- cat file.txt > /dev/tcp/10.2.0.2/1111
-		
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Day 6 (covered on Day 5)
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+  - Network Tunneling
+    - SSH:
+      - Used for tunneling
+      - SSH Port Forwarding:
+      	- Creates channels using SSH-CONN protocol
+	- Allows for tunneling of other services through SSh
+	- Local Port Fowarding looks like:
+	  - ssh -p <optional alt port> <user>@<pivot ip> -L <local bind port>:<tgt ip>:<tgt port> -NT (-p specifies a port number, 22 is the default)
+	    - or -
+	  - ssh -L <local bind port>:<tgt ip>:<tgt port> -p <alt port> <user>@<pivot ip> -NT (-L creates a local port bind, establishing the bind on the local machine)
+	  - Example: 	
+	    - ssh student@172.16.1.15 -L 1111:172.16.40.10:22 -NT - sets port 1111 tunnel to lead to port 22
+	    - ssh student@localhost -p 1111 -L 2222:172.16.82.106:80 -NT - sends traffic through port 1111 to go through port 2222 to go to 80
+	    - firefox localhost:2222 - uses firefox through port 2222 to go to port 80 (http) which then goes to ssh on port 22
+	- Dynamic Port Forwarding:
+	  - Syntax - ssh -D <port> -p <alt port> <user>@<pivot ip> -NT
+	  - Proxychains default port is 9050
+	  - Creates a dynamic socks4 proxy that interacts alone, or with a previously established remote or local port forward
+	  - Allows the use of scripts and other userspace programs 
+	  
