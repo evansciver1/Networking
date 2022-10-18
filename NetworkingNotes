@@ -188,3 +188,42 @@ Day 4
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 Day 5
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
+  - Data Transfer, Movement, and Redirection:
+    - Common Protocols:
+    	- TFTP
+	  - UDP transport
+	  - RFC 1350 Rev2
+	  - Extremely small and simple communication
+	  - No terminal communication
+	  - Insecure
+	  - No directory services
+	  - Used often for technologies such as BOOTP and PXE
+	- FTP (active and passive)
+	  - TCP transport
+	  - RFC 959
+	  - Uses multiple TCP connections
+	  - Control - port 21 / Data - port 20
+	  - Authentication through clear-text sign in
+	  - Insecure in default config
+	  - Has directory services
+	  - Can be enhanced with SSL/TLS
+	  - Anonymous login
+	- SFTP
+	  - TCP transport (TCP port 22)
+    	  - Uses symmetric and asymmetric encryption
+    	  - Adds FTP like services to SSH
+    	  - Authentication through sign in (username and password) or with SSH key
+          - Interactive terminal access
+	- FTPS
+	  - TCP transport (TCP port 443)
+    	  - Adds SSL/TLS encryption to FTP
+    	  - Authentication with username/password and/or PKI
+    	  - Interactive terminal access	
+	- SCP
+	  - TCP Transport (TCP port 22)
+    	  - Uses symmetric and asymmetric encryption
+    	  - Authentication through sign in (username and password) or with SSH key
+    	  - Non Interactive
+	  - Downloading a file from a remote directory to a local directory: scp student@172.16.82.106:secretstuff.txt /home/student
+	  - Upload a file to a remote directory from a local directory: scp secretstuff.txt student@172.16.82.106:/home/student
+	  - Copy a file from a remote host to a seperate remote host: scp -3 student@172.16.82.106:/home/student/secretstuff.txt student@172.16.82.112:/home/student
