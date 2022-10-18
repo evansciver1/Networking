@@ -1,0 +1,1 @@
+mknod [Pipe Name] -p / mkfifo [Pipe Name]: makes a pipe node
