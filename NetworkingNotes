@@ -252,3 +252,9 @@ Day 5
 	      - nc -l -p 9002 < infile.txt
 	    - On Listener1 (recieves info):
 	      - nc -l -p 9001 > outfile.txt
+	    - File Transfer with /Dev/TCP - useful for host that doesn't have NETCAT available:
+	      - On the receiving box:
+	      	- nc -l -p 1111 > file.txt
+	      - On the sending box:
+	      	- cat file.txt > /dev/tcp/10.2.0.2/1111
+		
