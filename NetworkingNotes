@@ -279,4 +279,5 @@ Day 6 (covered on Day 5)
 	  - Proxychains default port is 9050
 	  - Creates a dynamic socks4 proxy that interacts alone, or with a previously established remote or local port forward
 	  - Allows the use of scripts and other userspace programs 
-	  
+	 - Localhost:
+	  - Localhost on a -L is who you're going to; on a -R it's the box you ran the command from
