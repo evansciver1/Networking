@@ -261,6 +261,7 @@ Day 5
 Day 6 (covered on Day 5)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
   - Network Tunneling
+    - for i in {1..254} ;do (ping -c 1 192.168.1.$i 2>/dev/null | grep "bytes from" &) ;done
     - SSH:
       - Used for tunneling
       - SSH Port Forwarding:
@@ -281,3 +282,4 @@ Day 6 (covered on Day 5)
 	  - Allows the use of scripts and other userspace programs 
 	 - Localhost:
 	  - Localhost on a -L is who you're going to; on a -R it's the box you ran the command from
+	
