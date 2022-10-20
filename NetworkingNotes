@@ -262,6 +262,7 @@ Day 6 (covered on Day 5)
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
   - Network Tunneling
     - for i in {1..254} ;do (ping -c 1 192.168.1.$i 2>/dev/null | grep "bytes from" &) ;done
+    - nmap -Pn 192.168.0.1,5,25 -p 21-23,80 -T4 | egrep -i "open|scan report"
     - SSH:
       - Used for tunneling
       - SSH Port Forwarding:
