@@ -346,6 +346,7 @@ Day 8
       - Lists rules as commands interpreted by the system - iptables -t [table] -S
       - Inserts rule before rule number - iptables -t [table] -I [chain] [rule num] [rules] -j [action]
       - Deletes rule at rule number - iptables -t [table] -D [chain] [rule num]
+      - -m MULTIPORT lets you set multiple ports to be accepted i.e. -m multiport 6011,6012,6013
     - Nftable Families
       - ip - IPv4 packets
       - ip6 - IPv6 packets
