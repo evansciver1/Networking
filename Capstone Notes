@@ -1,0 +1,9 @@
+- Tunneling 
+  ssh [username]@[ip] -L [local bind port]:[tgt port/localhost]:[ssh port] / ssh [usn]@[localhost] -R [reverse port] 
+  ssh -D <port> -p <alt port> <user>@<pivot ip> -NT (Proxychains Dynamic Port)
+- Recon
+  nmap -Pn 192.168.0.1,5,25 -p 21-23,80 -T4 | egrep -i "open|scan report"
+  for i in {1..254} ;do (ping -c 1 192.168.1.$i 2>/dev/null | grep "bytes from" &) ;done
+- Traffic Redirection
+  Client (sends file): nc 10.2.0.2 9001 < file.txt
+  Listener (receive file): nc -l -p 9001 > newfile.txt
