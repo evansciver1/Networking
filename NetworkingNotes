@@ -160,7 +160,7 @@ Day 4
 		  - Approach:
 		  	- Aim: wide range target scan, target specific scan
 			- Method: single source scan, distributed scan
-	      - Types:
+	          - Types:
 		  	- Broadcast ping and ping sweep
 			- ARP scan
 			- SYN scan
