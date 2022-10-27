@@ -334,6 +334,7 @@ Day 8
 	- chains - contain rules
 	- rules - dictate what to match and what actions to perform on packets when packets match a rule
     - Configuring Iptables - https://git.cybbh.space/net/public/raw/master/modules/networking/slides/images/IPtables.png
+      - https://www.linuxtopia.org/Linux_Firewall_iptables/x4799.html
       - iptables - IPv4 packet administration
       - ip6tables - IPv6 packet administration
       - ebtables - Ethernet Bridge frame table administration
